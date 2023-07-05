@@ -8,7 +8,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store';
 import { Provider } from 'react-redux';
 import HomeScreen from './screens/HomeScreen';
@@ -18,6 +18,10 @@ import ProfileScreen from './screens/ProfileScreen.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import Video from './screens/video/Video.jsx';
 import CreateVideo from './screens/video/CreateVideo.jsx';
+import DetailVideo from './screens/video/DetailVideo.jsx';
+import UpdateVideo from './screens/video/UpdateVideo.jsx';
+import './index.css'
+import { Home } from './screens/public/Home.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +33,12 @@ const router = createBrowserRouter(
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/video" element={<Video />} />
         <Route path="/video/create" element={<CreateVideo />} />
+        <Route path="/video/:video_id" element={<DetailVideo />} />
+        <Route path="/video/update/:video_id" element={<UpdateVideo />} />
       </Route>
+
+      {/* Public */}
+      <Route path="/public" element={<Home />} />
     </Route>
   )
 );

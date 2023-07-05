@@ -13,6 +13,10 @@ const videoSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  isPublic: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Video = mongoose.model('Video', videoSchema)

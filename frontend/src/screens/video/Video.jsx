@@ -1,22 +1,32 @@
 import React from 'react'
-import { useGetVideosQuery } from '../../slices/vidoApiSlice'
+import { useDeleteVideoMutation, useGetVideosQuery } from '../../slices/vidoApiSlice'
+import {Link} from 'react-router-dom'
+import VideoCard from './VideoCard';
+import Loader from '../../components/Loader'
 
 const Video = () => {
   const {data, isLoading} = useGetVideosQuery();
 
   // Loading
   if(isLoading) {
-    return <h1>Loading</h1>
+    return <>
+      <Loader/>
+    </>
   }
-
-  console.log(data)
 
   return (
     <>
       <div>Video</div>
-      {data.map((d) => (
-         <h1 key={d._id}>{d.name}</h1>
-      ))}
+
+      <Link to={`/video/create`}>Create Video</Link>
+
+      <div className=" grid grid-cols-4">
+        {data.map((d) => (
+          <div key={d._id}>
+            <VideoCard d={d}/>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

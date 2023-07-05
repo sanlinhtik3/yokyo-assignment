@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const CreateVideo = () => {
 
-    const [createVideo, response] = useCreateVideoMutation()
+    const [createVideo, {isLoading}] = useCreateVideoMutation()
     // console.log(response)
 
     // if(response.isLoading) {
@@ -22,20 +22,19 @@ const CreateVideo = () => {
     const handleSubmit = async (event) => {
       event.preventDefault();
       // console.log(inputs)
-      await createVideo(inputs).unwrap();
-      // try {
-      // } catch (err) {
-      //   toast.error(err?.data?.message || err.error);
-      // }
+      try {
+        const res = await createVideo(inputs).unwrap();
+        toast.success(`Create Successfyl ${res.name}`);
+        setInputs({})
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
         
     };
 
   return (
     <>
       <h1>CreateVideo</h1>
-
-      {JSON.stringify(response.error)}
-
 
       <form onSubmit={handleSubmit}>
         <label>
@@ -65,7 +64,14 @@ const CreateVideo = () => {
             onChange={handleChange}
           />
         </label>
-        <input type="submit" />
+        <button className="btn btn-primary">
+          Submit
+          {isLoading && (
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          )}
+        </button>
       </form>
     </>
   );

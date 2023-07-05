@@ -1,6 +1,12 @@
 import expressAsyncHandler from "express-async-handler";
 import Video from "../models/videoModel.js";
 
+const getVideo = expressAsyncHandler(async (req, res) => {
+  const {video_id} = req.params
+  const video = await Video.findById(video_id);
+  return res.json(video);
+});
+
 const getVideos = expressAsyncHandler(async(req, res) => {
     const video = await Video.find()
   return res.json(video);
@@ -27,4 +33,4 @@ const deleteVideos = expressAsyncHandler(async (req, res) => {
 });
 
 
-export { getVideos, createVideos, deleteVideos, updateVideo };
+export { getVideos, createVideos, deleteVideos, updateVideo, getVideo };

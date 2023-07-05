@@ -8,6 +8,13 @@ export const videoApiSlice = createApi({
   reducerPath: "video",
   tagTypes: ["Video"],
   endpoints: (builder) => ({
+    getSingleVideo: builder.query({
+      query: (video_id) => ({
+        url: `${USERS_URL}/${video_id}`,
+        method: "GET",
+      }),
+      providesTags: ["Video"],
+    }),
     getVideos: builder.query({
       query: () => ({
         url: `${USERS_URL}`,
@@ -26,7 +33,25 @@ export const videoApiSlice = createApi({
       }),
       invalidatesTags: ["Video"],
     }),
+
+    updateVideo: builder.mutation({
+      query: ({id, dd}) => ({
+        url: `${USERS_URL}/${id}`,
+        method: "PATCH",
+        body: dd,
+      }),
+      invalidatesTags: ["Video"],
+    }),
+
+    deleteVideo: builder.mutation({
+      query: (payload) => ({
+        url: `${USERS_URL}/${payload}`,
+        method: "DELETE",
+        credentials: "include",
+      }),
+      invalidatesTags: ["Video"],
+    }),
   }),
 });
 
-export const {useGetVideosQuery, useCreateVideoMutation} = videoApiSlice
+export const {useGetVideosQuery, useGetSingleVideoQuery, useCreateVideoMutation, useDeleteVideoMutation, useUpdateVideoMutation} = videoApiSlice
