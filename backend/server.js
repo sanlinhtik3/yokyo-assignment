@@ -8,6 +8,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
 import videoRoutes from './routes/videoRoutes.js';
 import userControlRoutes from "./routes/userControlRoutes.js";
+import userManageRoute from './routes/userManageRoutes.js';
 
 const port = process.env.PORT || 8000;
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
+app.use("/api/manage-users", userManageRoute);
 app.use("/api/videos", videoRoutes);
 app.use("/api/", userControlRoutes);
 

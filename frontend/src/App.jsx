@@ -6,11 +6,13 @@ import Header from './components/Header';
 const App = () => {
   return (
     <>
-      <Header />
-      <ToastContainer />
-      <div className="container mx-auto">
-        <Outlet />
-      </div>
+      <main className="bg-gray-50">
+        <Header />
+        <ToastContainer />
+        <div className="container mx-auto">
+          <Outlet />
+        </div>
+      </main>
     </>
   );
 };

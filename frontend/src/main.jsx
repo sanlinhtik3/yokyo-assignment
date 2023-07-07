@@ -22,6 +22,8 @@ import DetailVideo from './screens/video/DetailVideo.jsx';
 import UpdateVideo from './screens/video/UpdateVideo.jsx';
 import './index.css'
 import { Home } from './screens/public/Home.jsx';
+import Users from './screens/users/Users.jsx';
+import UserEdit from './screens/users/UserEdit.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,10 +37,14 @@ const router = createBrowserRouter(
         <Route path="/video/create" element={<CreateVideo />} />
         <Route path="/video/:video_id" element={<DetailVideo />} />
         <Route path="/video/update/:video_id" element={<UpdateVideo />} />
+
+        {/* Users */}
+        <Route path="manage-users" element={<Users />} />
+        <Route path="manage-users/edit/:user_id" element={<UserEdit />} />
       </Route>
 
       {/* Public */}
-      <Route path="/public" element={<Home />} />
+      <Route path="public" element={<Home />} />
     </Route>
   )
 );

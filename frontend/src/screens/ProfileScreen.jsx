@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
 import { useUpdateUserMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
+import TextInput from '../components/TextInput';
 
 const ProfileScreen = () => {
   const [email, setEmail] = useState('');
@@ -46,55 +47,63 @@ const ProfileScreen = () => {
     }
   };
   return (
-    <FormContainer>
-      <h1>Update Profile</h1>
+    <section className="py-10">
+      <div className="max-w-2xl mx-auto px-10 py-10 bg-white rounded-2xl">
+        <h2 className="mb-4 text-xl font-bold text-gray-900 ">
+          Update Profile
+        </h2>
 
-      <Form onSubmit={submitHandler}>
-        <Form.Group className='my-2' controlId='name'>
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type='name'
-            placeholder='Enter name'
-            value={name}
+        <form onSubmit={submitHandler} className=" space-y-6">
+          <TextInput
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter name"
             onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group className='my-2' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Enter email'
-            value={email}
+            value={name || ""}
+            labelName="Name"
+          />
+          <TextInput
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter email"
             onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group className='my-2' controlId='password'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Enter password'
-            value={password}
+            value={email || ""}
+            labelName="Email Address"
+          />
+          <TextInput
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter email"
             onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+            value={password || ""}
+            labelName="Enter password"
+          />
 
-        <Form.Group className='my-2' controlId='confirmPassword'>
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Confirm password'
-            value={confirmPassword}
+          <TextInput
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter email"
             onChange={(e) => setConfirmPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+            value={confirmPassword || ""}
+            labelName="Confirm Password"
+          />
 
-        <Button type='submit' variant='primary' className='mt-3'>
-          Update
-        </Button>
+          <button
+            type="submit"
+            variant="primary"
+            className="py-2.5 px-5 w-full mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+          >
+            Update
+          </button>
 
-        {isLoading && <Loader />}
-      </Form>
-    </FormContainer>
+          {isLoading && <Loader />}
+        </form>
+      </div>
+    </section>
   );
 };
 

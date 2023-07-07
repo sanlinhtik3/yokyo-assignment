@@ -1,43 +1,42 @@
-import React, { useState } from 'react'
-import { useCreateVideoMutation, useGetSingleVideoQuery, useUpdateVideoMutation } from '../../slices/vidoApiSlice';
+import React, { useState } from "react";
+import {
+  useCreateVideoMutation,
+  useGetSingleVideoQuery,
+  useUpdateVideoMutation,
+} from "../../slices/vidoApiSlice";
 import { toast } from "react-toastify";
-import { useParams } from 'react-router-dom';
-import TextInput from '../../components/TextInput';
-import TextAreaInput from '../../components/TextAreaInput';
-import SpinnerSM from '../../components/SpinnerSM';
+import { useParams } from "react-router-dom";
+import TextInput from "../../components/TextInput";
+import TextAreaInput from "../../components/TextAreaInput";
+import SpinnerSM from "../../components/SpinnerSM";
 
 const UpdateVideo = () => {
-
-  
   const { video_id } = useParams();
-  
+
   const { data, isLoading, status } = useGetSingleVideoQuery(video_id);
 
   const [updateVideo, aa] = useUpdateVideoMutation();
 
   const [inputs, setInputs] = useState({});
 
-    const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs((values) => ({ ...values, [name]: value }));
-    };
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      // console.log(inputs)
-      try {
-        const res = await updateVideo({id: video_id, dd: inputs}).unwrap();
-        toast.success(`Create Successfyl ${res.name}`);
-        setInputs({})
-      } catch (err) {
-        toast.error(err?.data?.message || err.error);
-      }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await updateVideo({ id: video_id, dd: inputs }).unwrap();
+      toast.success(`Create Successfyl ${res.name}`);
+      setInputs({});
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
 
     console.log(inputs);
-
-        
-    };
+  };
 
   return (
     <>
@@ -104,12 +103,13 @@ const UpdateVideo = () => {
           id="countries"
           name="isPublic"
           onChange={handleChange}
+          value={data?.isPublic}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-          <option value="0" selected={data?.isPublic === 0 ? true : false}>
+          <option value="0">
             Draft
           </option>
-          <option value="1" selected={data?.isPublic === 1 ? true : false}>
+          <option value="1">
             Public
           </option>
         </select>
@@ -147,6 +147,6 @@ const UpdateVideo = () => {
       </form>
     </>
   );
-}
+};
 
-export default UpdateVideo
+export default UpdateVideo;
