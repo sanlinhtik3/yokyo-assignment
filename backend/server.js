@@ -9,6 +9,7 @@ import userRoutes from './routes/userRoutes.js';
 import videoRoutes from './routes/videoRoutes.js';
 import userControlRoutes from "./routes/userControlRoutes.js";
 import userManageRoute from './routes/userManageRoutes.js';
+import blogRoutes from './routes/blogRoutes.js';
 
 const port = process.env.PORT || 8000;
 
@@ -21,10 +22,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-app.use('/api/users', userRoutes);
-app.use("/api/manage-users", userManageRoute);
-app.use("/api/videos", videoRoutes);
 app.use("/api/", userControlRoutes);
+app.use('/api/users', userRoutes);
+app.use("/api/videos", videoRoutes);
+app.use("/api/manage-users", userManageRoute);
+app.use("/api/blog", blogRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   const __dirname = path.resolve();

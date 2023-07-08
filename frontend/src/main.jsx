@@ -24,6 +24,7 @@ import './index.css'
 import { Home } from './screens/public/Home.jsx';
 import Users from './screens/users/Users.jsx';
 import UserEdit from './screens/users/UserEdit.jsx';
+import Blog from './screens/blog/Blog.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,9 @@ const router = createBrowserRouter(
         {/* Users */}
         <Route path="manage-users" element={<Users />} />
         <Route path="manage-users/edit/:user_id" element={<UserEdit />} />
+
+        {/* Blog */}
+        <Route path="blog" element={<Blog />} />
       </Route>
 
       {/* Public */}

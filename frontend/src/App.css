@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "mm";
+    font-weight: normal;
+    src: url("./assets/fonts/Z06-Walone/Z06-Walone Regular.ttf");
+}
+
+@font-face {
+    font-family: "google-sans-mono";
+    font-weight: normal;
+    src: url("./assets/fonts/Google-Sans-Mono-master/Google-Sans-Mono-Regular.ttf");
+}
+
+body,
+h1,h2, h3,h4,h5,h6 {
+  font-family: 'mm','Poppins', "google-sans-mono",  sans-serif;
+}
+
+
+.theme-code-block,
+code,
+pre {
+  font-family: "google-sans-mono"!important;
+}

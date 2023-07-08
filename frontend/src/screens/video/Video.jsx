@@ -33,7 +33,7 @@ const Video = () => {
         Create Video
       </button>
 
-      <div className=" grid gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <div className=" grid gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((d) => (
           <div key={d._id}>
             <VideoCard d={d} u={u} l={l} />
