@@ -60,7 +60,7 @@ const UserTableComponent = () => {
                     </div>
                   </th>
                   <td className="px-6 py-4">
-                    {data.access === 0 ? "User" : "Admin"}
+                    {data.access === 0 ? "Pending" : data.access === 1 ? 'User': 'Admin'}
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center">

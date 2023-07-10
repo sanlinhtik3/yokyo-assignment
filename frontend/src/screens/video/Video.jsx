@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDeleteVideoMutation, useGetVideosQuery } from '../../slices/vidoApiSlice'
 import {Link, useNavigate} from 'react-router-dom'
 import VideoCard from './VideoCard';
@@ -14,6 +14,14 @@ const Video = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const { data: u, isLoading: l } = useGetManageUserQuery(userInfo._id);
   
+  
+
+  useEffect(() => {
+    if (u?.access === 0) {
+      return navigate(`/`);
+    }
+  }, [navigate, data]);
+
   // Loading
   if(isLoading) {
     return <>

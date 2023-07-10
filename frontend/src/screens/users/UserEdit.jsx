@@ -45,9 +45,9 @@ const UserEdit = () => {
   };
 
   const options = [
-    { value: "", text: "--Choose an option--" },
-    { value: 0, text: "User 🍏" },
-    { value: 1, text: "Admin 🍌" },
+    { value: 0, text: "Pending 🍏" },
+    { value: 1, text: "User 🍌" },
+    { value: 2, text: "Admin 🍌" },
   ];
 
   return (
@@ -113,11 +113,11 @@ const UserEdit = () => {
                 id="countries"
                 name="access"
                 onChange={handleChange}
-                value={data?.access}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option value="0">User</option>
-                <option value="1">Admin</option>
+                {options?.map((option, index) => (
+                  <option key={index} value={option.value} selected={option.value === data?.access ? true : false}>{option.text}</option>
+                ))}
               </select>
             </div>
 

@@ -11,7 +11,7 @@ const Users = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (data?.access === 0) {
+    if (data?.access === 0 || data?.access === 1) {
       return navigate(`/`);
     }
   }, [navigate, data]);

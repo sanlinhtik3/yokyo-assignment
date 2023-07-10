@@ -43,7 +43,7 @@ const VideoCard = ({d, u, l}) => {
               : d?.description.substring(0, 10) + `...`}
           </p>
 
-          {u?.access === 1 && (
+          {u?.access === 2 && (
             <span
               className={` text-xs ${
                 d.isPublic === 0
@@ -70,7 +70,7 @@ const VideoCard = ({d, u, l}) => {
               Detail
             </Link>
 
-            {u?.access === 1 && (
+            {u?.access === 2 && (
               <>
                 <Link
                   to={`/video/update/${d._id}`}

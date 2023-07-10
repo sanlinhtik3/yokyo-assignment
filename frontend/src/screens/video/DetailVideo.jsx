@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGetSingleVideoQuery } from '../../slices/vidoApiSlice'
 import VideoCard from './VideoCard'
 import { Link } from "react-router-dom";
 import { useDeleteVideoMutation } from "../../slices/vidoApiSlice";
 import { PencilIcon } from '@heroicons/react/20/solid';
+import { useSelector } from 'react-redux';
+import { useGetManageUserQuery } from '../../slices/usersManageApiSlice';
+import Loader from '../../components/Loader';
 
 const DetailVideo = () => {
 
@@ -14,6 +17,23 @@ const DetailVideo = () => {
   const {data, isLoading} = useGetSingleVideoQuery(video_id)
   // const [deleteVideo, gg] = useDeleteVideoMutation();
 
+  const { userInfo } = useSelector((state) => state.auth);
+  const { data:d, isLoading:l } = useGetManageUserQuery(userInfo._id);
+
+
+  useEffect(() => {
+    if (d?.access === 0) {
+      return navigate(`/`);
+    }
+  }, [navigate, data]);
+
+  if (isLoading) {
+    return (
+      <>
+        <Loader />
+      </>
+    );
+  }
 
   if(isLoading) {
     return <h1>Loading...</h1>
@@ -40,6 +60,9 @@ const DetailVideo = () => {
             allowFullScreen
           ></iframe>
           <div className=" bg-gray-50 mt-5 rounded-xl space-y-3">
+
+          {d?.access === 2 && (
+
             <div className="">
               <span
                 className={` text-xs bg-green-100 ${
@@ -54,6 +77,9 @@ const DetailVideo = () => {
                 {data.isPublic === 0 ? "Draft" : "Public"}
               </span>
             </div>
+          )}
+
+            {d?.access === 2 && (
 
             <div className="">
               <button
@@ -67,6 +93,7 @@ const DetailVideo = () => {
                 Edit
               </button>
             </div>
+            )}
 
             {/* <button
               className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
