@@ -8,9 +8,9 @@ import Loader from './Loader';
 const Hero = () => {
 
 
-  const { userInfo } = useSelector((state) => state.auth);
-  const { data, isLoading } = useGetManageUserQuery(userInfo._id);
-  const navigate = useNavigate();
+  // const { userInfo } = useSelector((state) => state.auth);
+  // const { data, isLoading } = useGetManageUserQuery(userInfo._id);
+  // const navigate = useNavigate();
 
 
   // useEffect(() => {
@@ -33,7 +33,7 @@ const Hero = () => {
         <Card className='p-5 d-flex flex-column align-items-center hero-card bg-light w-75 text-center'>
           <h1 className='text-center mb-4'>Yoko</h1>
           <h1 className='text-center text-5xl mb-4'>
-            {data?.access === 0 && 'Pending'}
+            {/* {data?.access === 0 && 'Pending'} */}
           </h1>
           <Link to={`/video`} className=' bg-pink-500 px-6 py-4 rounded-2xl text-white'>Go to video</Link>
           <p className='text-center mb-4'>

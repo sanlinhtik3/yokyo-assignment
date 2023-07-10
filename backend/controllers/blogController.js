@@ -22,6 +22,7 @@ const createBlog = expressAsyncHandler(async (req, res) => {
 
 const updateBlog = expressAsyncHandler(async (req, res) => {
   const { id } = req.params;
+  // return console.log(id)
   const updatedBlog = await Blog.findByIdAndUpdate(id, req.body, { new: true });
   return res.json(updatedBlog);
 });

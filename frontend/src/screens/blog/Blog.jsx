@@ -1,5 +1,8 @@
 import React from 'react'
 import MarkDown from '../../components/MarkDown';
+import { useDeleteBlogMutation, useGetBlogsQuery } from '../../slices/blogApiSlice';
+import { Link } from 'react-router-dom';
+import BlogCard from './components/BlogCard';
 
 const markdown = `# A demo of \`react-markdown\`
 \`react-markdown\` is a markdown component for React.
@@ -81,11 +84,23 @@ Much more info is available in the
 ***
 A component by [Espen Hovlandsdal](https://espen.codes/)`;
 
+
 const Blog = () => {
+  // Fetch data for all blog
+  const { data, isLoading } = useGetBlogsQuery()
+
+  // Delete data from blog post
+
   return (
     <>
-      {/* <div>Blog</div> */}
-      <MarkDown markdown={`${markdown}`} />
+      <div>Blogmmm</div>
+      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        {data?.map(d => (
+          <div key={d._id}>
+            <BlogCard data={d} />
+          </div>
+        ))}
+      </div>
     </>
   );
 }

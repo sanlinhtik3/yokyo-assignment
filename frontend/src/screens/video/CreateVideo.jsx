@@ -19,15 +19,13 @@ const CreateVideo = () => {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-      // console.log(inputs)
       try {
         const res = await createVideo(inputs).unwrap();
         toast.success(`Create Successfyl ${res.name}`);
         setInputs({})
       } catch (err) {
         toast.error(err?.data?.message || err.error);
-      }
-        
+      }   
     };
 
   return (

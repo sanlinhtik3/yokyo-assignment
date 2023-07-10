@@ -25,6 +25,9 @@ import { Home } from './screens/public/Home.jsx';
 import Users from './screens/users/Users.jsx';
 import UserEdit from './screens/users/UserEdit.jsx';
 import Blog from './screens/blog/Blog.jsx';
+import { BlogCreate } from './screens/blog/BlogCreate.jsx';
+import { EditCreate } from './screens/blog/BlogEdit.jsx';
+import BlogRead from './screens/blog/BlogRead.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,7 +47,13 @@ const router = createBrowserRouter(
         <Route path="manage-users/edit/:user_id" element={<UserEdit />} />
 
         {/* Blog */}
-        <Route path="blog" element={<Blog />} />
+        <Route path="blog" >
+          <Route index={true} element={<Blog />} />
+          <Route path="create" element={<BlogCreate />} />
+          <Route path=":id" element={<BlogRead />} />
+          <Route path="edit/:id" element={<EditCreate />} />
+        </Route>
+
       </Route>
 
       {/* Public */}
