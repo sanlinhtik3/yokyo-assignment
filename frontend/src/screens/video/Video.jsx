@@ -30,7 +30,8 @@ const Video = () => {
   }
 
   return (
-    <>
+    <div className='max-w-screen-xl mx-auto p-4'>
+
       <h1 className=" text-3xl font-bold mb-3">Watch Videos</h1>
 
       <button
@@ -48,7 +49,7 @@ const Video = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

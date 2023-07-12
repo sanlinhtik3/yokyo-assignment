@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import FormContainer from '../components/FormContainer';
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
 import { useUpdateUserMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import TextInput from '../components/TextInput';
+import { Button } from '../components/Button';
 
 const ProfileScreen = () => {
   const [email, setEmail] = useState('');
@@ -76,7 +74,7 @@ const ProfileScreen = () => {
             type="password"
             name="password"
             id="password"
-            placeholder="Enter email"
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password || ""}
             labelName="Enter password"
@@ -86,19 +84,15 @@ const ProfileScreen = () => {
             type="password"
             name="password"
             id="password"
-            placeholder="Enter email"
+            placeholder="Confirm Password"
             onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword || ""}
             labelName="Confirm Password"
           />
 
-          <button
-            type="submit"
-            variant="primary"
-            className="py-2.5 px-5 w-full mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
-          >
-            Update
-          </button>
+          <Button
+            className=' w-full py-3 text-white'
+          >Update</Button>
 
           {isLoading && <Loader />}
         </form>

@@ -6,7 +6,12 @@ export default {
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["mm"],
+        poppins: ["Poppins", "sans-serif"],
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography"), require("flowbite/plugin")],
 };

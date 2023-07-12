@@ -25,12 +25,12 @@ const Users = () => {
   }
 
   return (
-    <>
+    <div className="max-w-screen-xl mx-auto p-4">
       <div className=" py-10">
         <h2 className="mb-4 text-xl font-bold text-gray-900 ">Manage users</h2>
         <UserTableComponent />
       </div>
-    </>
+    </div>
   );
 };
 
