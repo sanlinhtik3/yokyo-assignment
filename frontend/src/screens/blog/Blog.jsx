@@ -1,8 +1,13 @@
 import React from 'react'
 import MarkDown from '../../components/MarkDown';
 import { useDeleteBlogMutation, useGetBlogsQuery } from '../../slices/blogApiSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BlogCard from './components/BlogCard';
+import { Button } from '../../components/Button'
+import { PlusCircleIcon } from '@heroicons/react/20/solid';
+import EmptyIcon from '../../assets/icons/EmptyIcon';
+import { useSelector } from 'react-redux';
+import { useGetManageUserQuery } from '../../slices/usersManageApiSlice';
 
 const markdown = `# A demo of \`react-markdown\`
 \`react-markdown\` is a markdown component for React.
@@ -87,13 +92,27 @@ A component by [Espen Hovlandsdal](https://espen.codes/)`;
 
 const Blog = () => {
   // Fetch data for all blog
+  const { userInfo } = useSelector((state) => state.auth);
+  const { data: u, isLoading: l } = useGetManageUserQuery(userInfo._id);
+
   const { data, isLoading } = useGetBlogsQuery()
+  const navigate = useNavigate()
 
   // Delete data from blog post
 
   return (
     <div className='max-w-screen-xl mx-auto p-4 space-y-10'>
       <h1 class="flex items-center text-5xl font-bold dark:text-white font-poppins">Blog<span class="bg-blue-100 text-blue-800 text-2xl font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-2">PRO</span></h1>
+      {u?.access === 2 && (
+        <button
+          onClick={() => navigate(`/blog/create`)}
+          className="flex items-center py-2.5 px-3 mr-2 mb-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-xl border border-gray-100 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 "
+        >
+          <PlusCircleIcon className=" w-4 mr-2" />
+          Create Blog
+        </button>
+      )}
+
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {data?.map(d => (
           <div key={d._id}>
@@ -101,6 +120,14 @@ const Blog = () => {
           </div>
         ))}
       </div>
+
+      {data?.length === 0 && (
+        <div className=" text-center space-y-5">
+          <EmptyIcon className='w-60 mx-auto' />
+          <h1 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-5xl lg:text-6xl font-poppins"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Oops!</span> Empty blog</h1>
+        </div>
+      )}
+
     </div>
   );
 }

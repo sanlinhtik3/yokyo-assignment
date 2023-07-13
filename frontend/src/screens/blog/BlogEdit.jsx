@@ -54,7 +54,7 @@ export const EditCreate = () => {
 
                             <TextAreaInput
                                 id="description"
-                                rows="3"
+                                rows="10"
                                 type="text"
                                 name="description"
                                 defaultValue={data?.description || ""}

@@ -29,9 +29,7 @@ const UserTableComponent = () => {
                 <th scope="col" className="px-6 py-3">
                   Access
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  Status
-                </th>
+                
                 <th scope="col" className="px-6 py-3">
                   Action
                 </th>
@@ -62,12 +60,7 @@ const UserTableComponent = () => {
                   <td className="px-6 py-4">
                     {data.access === 0 ? "Pending" : data.access === 1 ? 'User': 'Admin'}
                   </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center">
-                      <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                      Online
-                    </div>
-                  </td>
+                  
                   <td className="px-6 py-4">
                     <Link
                       to={`/manage-users/edit/${data._id}`}

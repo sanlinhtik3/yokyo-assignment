@@ -24,8 +24,8 @@ const VideoCard = ({d, u, l}) => {
       <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
         <div className="p-5">
           <iframe
-            className="aspect-video w-full rounded-lg mb-2"
-            src="https://www.youtube.com/embed/S2fLodWf_WQ"
+            className="aspect-video w-full rounded-lg mb-2 "
+            src={d?.video_link}
             title="YouTube video player"
             // frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
