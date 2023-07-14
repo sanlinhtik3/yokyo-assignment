@@ -1,7 +1,7 @@
 
 export const Button = ({ children = "Your Button", className = '', type = "submit", isLoading = false, ...props }) => {
   return (
-    <button type={type} {...props} className={`py-3 transition-all px-5 mr-2 mb-2 text-sm font-medium t focus:outline-none  rounded-2xl border border-gray-200 bg-violet-600 hover:bg-violet-800 text-violet-50 h focus:z-10 focus:ring-4 focus:ring-gray-200 ${className}`}>
+    <button type={type} {...props} className={`py-3 transition-all px-5 mr-2 mb-2 text-sm font-medium t focus:outline-none  rounded-2xl border border-gray-200 bg-blue-600 hover:bg-blue-800 text-blue-50 h focus:z-10 focus:ring-4 focus:ring-gray-200 ${className}`}>
       {isLoading ? (
         <>
         <svg

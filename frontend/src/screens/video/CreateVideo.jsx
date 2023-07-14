@@ -30,7 +30,7 @@ const CreateVideo = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-2xl my-5 lg:my-10">
         <h1 className=" text-3xl font-bold mb-3">CreateVideo</h1>
 
         <button
@@ -115,7 +115,7 @@ const CreateVideo = () => {
                 Loading...
               </>
             ) : (
-              "Update"
+              "Post"
             )}
           </button>
         </form>

@@ -37,7 +37,7 @@ export const EditCreate = () => {
         <>
             <section className=" dark:bg-gray-900 max-w-screen-xl mx-auto">
                 <div className="py-8 px-4 lg:py-16">
-                    <h2 className="mb-4 text-xl font-bold text-gray-900 font-poppins">Add a new blog</h2>
+                    <h2 className="mb-4 text-xl font-bold text-gray-900 font-poppins">Update blog</h2>
 
                     <div className="grid gap-5 md:grid-cols-2">
                         <form onSubmit={handleSubmit} className="space-y-5 bg-white p-5 rounded-2xl">
@@ -59,9 +59,10 @@ export const EditCreate = () => {
                                 name="description"
                                 defaultValue={data?.description || ""}
                                 onChange={handleChange}
+                                labelName="Description"
                             />
 
-                            <Button isLoading={isLoading}>Add Post</Button>
+                            <Button isLoading={isLoading}>Update</Button>
                         </form>
                         <div className=" bg-white p-5 rounded-2xl">
                             <h2 className="mb-4 text-xl font-bold text-gray-900 font-poppins">Preview</h2>
