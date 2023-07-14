@@ -47,7 +47,7 @@ const router = createBrowserRouter(
         <Route path="manage-users/edit/:user_id" element={<UserEdit />} />
 
         {/* Blog */}
-        <Route path="blog" >
+        <Route path="blog">
           <Route index={true} element={<Blog />} />
           <Route path="create" element={<BlogCreate />} />
           <Route path=":id" element={<BlogRead />} />

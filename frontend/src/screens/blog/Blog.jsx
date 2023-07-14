@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MarkDown from '../../components/MarkDown';
 import { useDeleteBlogMutation, useGetBlogsQuery } from '../../slices/blogApiSlice';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { PlusCircleIcon } from '@heroicons/react/20/solid';
 import EmptyIcon from '../../assets/icons/EmptyIcon';
 import { useSelector } from 'react-redux';
 import { useGetManageUserQuery } from '../../slices/usersManageApiSlice';
+import Loader from '../../components/Loader'
+
 
 const markdown = `# A demo of \`react-markdown\`
 \`react-markdown\` is a markdown component for React.
@@ -91,12 +93,26 @@ A component by [Espen Hovlandsdal](https://espen.codes/)`;
 
 
 const Blog = () => {
-  // Fetch data for all blog
+  // Get currently user
   const { userInfo } = useSelector((state) => state.auth);
   const { data: u, isLoading: l } = useGetManageUserQuery(userInfo._id);
 
   const { data, isLoading } = useGetBlogsQuery()
   const navigate = useNavigate()
+
+  // check auth user
+  useEffect(() => {
+    if (u?.access === 0) {
+      return navigate(`/`);
+    }
+  }, [navigate, data]);
+
+  // Loading
+  if (isLoading || l) {
+    return <>
+      <Loader />
+    </>
+  }
 
   // Delete data from blog post
 
@@ -116,7 +132,7 @@ const Blog = () => {
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {data?.map(d => (
           <div key={d._id}>
-            <BlogCard data={d} />
+            <BlogCard data={d} auth={u} />
           </div>
         ))}
       </div>
