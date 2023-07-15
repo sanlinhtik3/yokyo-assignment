@@ -28,6 +28,9 @@ import Blog from './screens/blog/Blog.jsx';
 import { BlogCreate } from './screens/blog/BlogCreate.jsx';
 import { EditCreate } from './screens/blog/BlogEdit.jsx';
 import BlogRead from './screens/blog/BlogRead.jsx';
+import CreateContact from './screens/contact/CreateVideo.jsx';
+import Contact from './screens/contact/Contact.jsx';
+import DetailContact from './screens/contact/DetailContact.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -55,6 +58,14 @@ const router = createBrowserRouter(
         </Route>
 
       </Route>
+
+      {/* Contact */}
+      <Route path="contact">
+          <Route index={true} element={<Contact />} />
+          <Route path="create" element={<CreateContact />} />
+          <Route path=":id" element={<DetailContact />} />
+          {/* <Route path="edit/:id" element={<EditCreate />} /> */}
+        </Route>
 
       {/* Public */}
       <Route path="public" element={<Home />} />

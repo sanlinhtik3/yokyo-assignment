@@ -28,7 +28,7 @@ const Header = () => {
     }
   };
 
-  console.log(userInfo === null)
+  // console.log(userInfo === null)
 
   return (
     <>
@@ -37,7 +37,7 @@ const Header = () => {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center">
             <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
-            <h3 class="inline-block text-xl font-bold text-gray-900 dark:text-white md:text-3xl lg:text-4xl font-poppins"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">YOKYO</span></h3>
+            <h3 className="inline-block text-xl font-bold text-gray-900 dark:text-white md:text-3xl lg:text-4xl font-poppins"><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">YOKYO</span></h3>
             {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> */}
           </Link>
           <div className="flex items-center md:order-2">
@@ -111,6 +111,9 @@ const Header = () => {
                   <ActiveLink to="blog">Blog</ActiveLink>
                 </li>
               )}
+              <li>
+                <ActiveLink to="/contact/create">Contact</ActiveLink>
+              </li>
             </ul>
           </div>
         </div>

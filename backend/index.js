@@ -10,6 +10,7 @@ import videoRoutes from './routes/videoRoutes.js';
 import userControlRoutes from "./routes/userControlRoutes.js";
 import userManageRoute from './routes/userManageRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 const port = process.env.PORT || 8000;
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use("/api/", userControlRoutes);
 app.use('/api/users', userRoutes);
 app.use("/api/videos", videoRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/api/manage-users", userManageRoute);
 app.use("/api/blog", blogRoutes);
 
