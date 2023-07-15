@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { useGetManageUserQuery } from '../../slices/usersManageApiSlice';
 import Loader from '../../components/Loader';
 import { useGetSingleContactQuery } from '../../slices/contactApiSlice';
+import E404 from '../../E404';
 
 const DetailContact = () => {
 
@@ -38,6 +39,10 @@ const DetailContact = () => {
 
   if (isLoading) {
     return <h1>Loading...</h1>
+  }
+
+  if (id !== data?._id || l) {
+    return <E404/>
   }
 
   return (

@@ -33,26 +33,26 @@ export const BlogCreate = () => {
                 <div className="py-8 px-4 mx-auto max-w-2xl lg:py-10 bg-white rounded-2xl md:px-10">
                     <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white font-poppins">Add a new blog</h2>
                     <form onSubmit={handleSubmit} className=" space-y-5">
-                    <TextInput
-                                type="text"
-                                name="name"
-                                id="name"
-                                placeholder="Aa"
-                                onChange={handleChange}
-                                value={inputs.name || ""}
-                                labelName="Name"
-                                required
-                            />
+                        <TextInput
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Aa"
+                            onChange={handleChange}
+                            value={inputs.name || ""}
+                            labelName="Name"
+                            required
+                        />
 
 
-                            <TextAreaInput
-                                id="description"
-                                rows="3"
-                                type="text"
-                                name="description"
-                                value={inputs.description || ""}
-                                onChange={handleChange}
-                            />
+                        <TextAreaInput
+                            id="description"
+                            rows="3"
+                            type="text"
+                            name="description"
+                            value={inputs.description || ""}
+                            onChange={handleChange}
+                        />
                         <button className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center ${isLoading && "bg-blue-800"}`} >
                             {isLoading ? (
                                 <>

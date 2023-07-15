@@ -53,7 +53,7 @@ const router = createBrowserRouter(
         {/* Blog */}
         <Route path="blog">
           <Route index={true} element={<Blog />} />
-          {/* <Route path="create" element={<BlogCreate />} /> */}
+          <Route path="create" element={<BlogCreate />} />
           <Route path=":id" element={<BlogRead />} />
           <Route path="edit/:id" element={<EditCreate />} />
         </Route>
@@ -70,9 +70,7 @@ const router = createBrowserRouter(
       {/* Public */}
       <Route path="public" element={<Home />} />
       <Route path="contact/create" element={<CreateContact />} />
-
-      <Route path='*' element={<E404/>}/>
-
+      <Route path='*' element={<E404 />} />
     </Route>
   )
 );
