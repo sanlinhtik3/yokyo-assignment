@@ -18,11 +18,11 @@ const Contact = () => {
   const { data: u, isLoading: l } = useGetManageUserQuery(userInfo?._id);
 
 
-  useEffect(() => {
-    if (u?.access === 0 || u?.access === 1) {
-      return navigate(`/`);
-    }
-  }, [navigate, data, u]);
+  // useEffect(() => {
+  //   if (u?.access === 0 || u?.access === 1) {
+  //     return navigate(`/`);
+  //   }
+  // }, [navigate, data, u]);
 
   // Loading
   if (isLoading) {

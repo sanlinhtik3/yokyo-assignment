@@ -57,18 +57,14 @@ const router = createBrowserRouter(
           <Route path="edit/:id" element={<EditCreate />} />
         </Route>
 
-
+        {/* Contact */}
+        <Route path="contact">
+          <Route index={true} element={<Contact />} />
+          <Route path=":id" element={<DetailContact />} />
+          {/* <Route path="edit/:id" element={<EditCreate />} /> */}
+        </Route>
 
       </Route>
-
-
-      {/* Contact */}
-      <Route path="contact">
-        <Route index={true} element={<Contact />} />
-        <Route path=":id" element={<DetailContact />} />
-        {/* <Route path="edit/:id" element={<EditCreate />} /> */}
-      </Route>
-
 
       {/* Public */}
       <Route path="public" element={<Home />} />
