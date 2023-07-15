@@ -52,23 +52,26 @@ const router = createBrowserRouter(
         {/* Blog */}
         <Route path="blog">
           <Route index={true} element={<Blog />} />
-          <Route path="create" element={<BlogCreate />} />
+          {/* <Route path="create" element={<BlogCreate />} /> */}
           <Route path=":id" element={<BlogRead />} />
           <Route path="edit/:id" element={<EditCreate />} />
         </Route>
 
-      </Route>
-
-      {/* Contact */}
-      <Route path="contact">
+        {/* Contact */}
+        <Route path="contact">
           <Route index={true} element={<Contact />} />
-          <Route path="create" element={<CreateContact />} />
           <Route path=":id" element={<DetailContact />} />
           {/* <Route path="edit/:id" element={<EditCreate />} /> */}
         </Route>
 
+      </Route>
+
+
+
       {/* Public */}
       <Route path="public" element={<Home />} />
+      <Route path="contact/create" element={<CreateContact />} />
+
     </Route>
   )
 );
