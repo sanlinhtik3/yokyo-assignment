@@ -20,6 +20,7 @@ const ContactTableComponent = () => {
   const [delete_contact, {isLoading: delete_loading}] = useDeleteContactMutation()
 
 
+
   return (
     <>
       <div className=" p-5 bg-white rounded-xl">
@@ -29,9 +30,6 @@ const ContactTableComponent = () => {
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Access
                 </th>
                 
                 <th scope="col" className="px-6 py-3">
@@ -61,9 +59,6 @@ const ContactTableComponent = () => {
                       </div>
                     </div>
                   </th>
-                  <td className="px-6 py-4">
-                    {data.access === 0 ? "Pending" : data.access === 1 ? 'User': 'Admin'}
-                  </td>
                   
                   <td className="px-6 py-4">
                     <Link
