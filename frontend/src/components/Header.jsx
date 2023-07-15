@@ -111,6 +111,11 @@ const Header = () => {
                   <ActiveLink to="blog">Blog</ActiveLink>
                 </li>
               )}
+              {data?.access === 2 && (
+                <li>
+                  <ActiveLink to="/contact">Request Contact</ActiveLink>
+                </li>
+              )}
               <li>
                 <ActiveLink to="/contact/create">Contact</ActiveLink>
               </li>

@@ -31,6 +31,7 @@ import BlogRead from './screens/blog/BlogRead.jsx';
 import CreateContact from './screens/contact/CreateVideo.jsx';
 import Contact from './screens/contact/Contact.jsx';
 import DetailContact from './screens/contact/DetailContact.jsx';
+import E404 from './E404.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -69,6 +70,8 @@ const router = createBrowserRouter(
       {/* Public */}
       <Route path="public" element={<Home />} />
       <Route path="contact/create" element={<CreateContact />} />
+
+      <Route path='*' element={<E404/>}/>
 
     </Route>
   )
