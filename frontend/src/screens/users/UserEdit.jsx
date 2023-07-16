@@ -37,7 +37,7 @@ const UserEdit = () => {
     // }
     try {
       const res = await updateUser({ id: user_id, dd: enteredInputs }).unwrap();
-      toast.success(`Create Successfyl ${res.name}`);
+      toast.success(`Create Successfully ${res.name}`);
       setInputs({});
     } catch (err) {
       toast.error(err?.data?.message || err.error);
